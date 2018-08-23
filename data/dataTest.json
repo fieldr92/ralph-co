@@ -1,0 +1,44 @@
+{
+  "frames": [
+    {
+      "duration": 4000,
+      "layers": [
+        {
+          "type": "image",
+          "x": 0,
+          "y": 0,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        },
+        {
+          "type": "spritesheet",
+          "start-time": 1000,
+          "count": 100,
+          "framerate": 25,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        }
+      ]
+    },
+    {
+      "duration": 4000,
+      "layers": [
+        {
+          "type": "image",
+          "x": 0,
+          "y": 0,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        },
+        {
+          "type": "spritesheet",
+          "start-time": 1000,
+          "count": 100,
+          "framerate": 25,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        }
+      ]
+    }
+  ]
+}
