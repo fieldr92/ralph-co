@@ -10,12 +10,13 @@ class Banner {
   }
 
   loadQueue() {    
-    const hello = this.data.frames.forEach(frame => {
-      this.imgElements = frame.layers.map(layer => {
-        return layer.src;
-      })
+    const images = this.data.frames.forEach(frame => {
+      frame.layers.forEach(layer => {
+        if (layer.src) { this.imgElements.push(layer.src) }
+      });
     });
-    console.log('hello', hello);
+    console.log(images);
+    return images;
     // const queue = new createjs.loadQueue();
     // queue.on("complete", handleComplete, this);
 
@@ -29,7 +30,6 @@ class Banner {
   }
 
   createElements() {
-
   }
 
 }
