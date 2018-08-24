@@ -28,7 +28,7 @@ export default {
       "layers": [
         {
           "type": "image",
-          "src": "image.png",
+          "src": "image2.png",
           "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "x": 0,
           "y": 0,
