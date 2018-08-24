@@ -36,6 +36,24 @@ export default {
           "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
         },
         {
+          "type": "image",
+          "src": "image3.png",
+          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
+          "x": 0,
+          "y": 0,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        },
+        {
+          "type": "image",
+          "src": "image4.png",
+          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
+          "x": 0,
+          "y": 0,
+          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+        },
+        {
           "type": "text",
           "text-input": "hello world",
           "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
