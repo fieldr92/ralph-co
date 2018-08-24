@@ -8,7 +8,6 @@ class Banner {
     this.height = height;
     this.data = data;
     this.imgElements = [];
-    this.imagesForManifest = null;
   }
 
   init() {
@@ -29,18 +28,14 @@ class Banner {
     this.imagesForManifest = this.imgElements.map(el => {
       return { id: el.substr(0, el.lastIndexOf('.')), src: assetPath + el }
     })
-    
-    const queue = new createjs.LoadQueue();
-    queue.on("complete", this.handleComplete);
-    queue.loadManifest( this.imagesForManifest );
-
+    this.queue = new createjs.LoadQueue();
+    this.queue.on("complete", this.handleComplete.bind(this))
+    this.queue.loadManifest( this.imagesForManifest );
   }
 
-  handleComplete() {
-    console.log(this.imagesForManifest);
-    
+  handleComplete() {    
     this.imagesForManifest.forEach(img => {
-      const image = queue.getResult(img.id)
+      const image = this.queue.getResult(img.id)
       document.body.appendChild(image);
     });
   }
