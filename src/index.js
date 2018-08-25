@@ -11,16 +11,26 @@ class Banner {
   }
 
   init() {
+    this.stage = new createjs.Stage('stage');
+    // this.stage.enableMouseOver(10);
+    createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
     this.pushAssetsToImgElements();
     this.createManifest();
   }
 
-  pushAssetsToImgElements() {    
+  handleTick(e) {
+    this.stage.update();
+  }
+
+  pushAssetsToImgElements() {   
+    this.imgElements.push(data.background);
+
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         if (layer.src) { this.imgElements.push(layer.src) }
       });
-    });    
+    });
+    console.log(this.imgElements);
     return this;
   }
 
@@ -36,11 +46,11 @@ class Banner {
   handleComplete() {    
     this.imagesForManifest.forEach(img => {
       const image = this.queue.getResult(img.id)
-      document.body.appendChild(image);
+      // document.body.appendChild(image);
     });
   }
 
 }
 
-new Banner({width: 300, height: 250, data})
+window.onload = new Banner({width: 300, height: 250, data})
   .init();
