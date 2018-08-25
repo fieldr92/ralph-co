@@ -1,4 +1,5 @@
 export default {
+  "background": "background.png",
   "frames": [
     {
       "duration": 4000,
