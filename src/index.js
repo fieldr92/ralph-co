@@ -2,52 +2,70 @@ import data from './data/dataTest';
 
 const assetPath = "./assets/";
 
-class Banner {
+export default class Banner {
   constructor({ width, height, data }) {
+    this.stage;
     this.width = width;
     this.height = height;
     this.data = data;
+    this.frames = [];
     this.imgElements = [];
+    this.elements = {};
   }
 
   init() {
-    this.stage = new createjs.Stage('stage');
+    this.stage = new createjs.Stage('stage');    
     // this.stage.enableMouseOver(10);
     createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
     this.pushAssetsToImgElements();
     this.createManifest();
   }
 
-  handleTick(e) {
+  handleTick(event) {
     this.stage.update();
   }
 
-  pushAssetsToImgElements() {   
-    this.imgElements.push(data.background);
-
+  pushAssetsToImgElements() {
+    this.imgElements.push(this.data.background);
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         if (layer.src) { this.imgElements.push(layer.src) }
       });
     });
-    console.log(this.imgElements);
-    return this;
   }
 
   createManifest() {
-    this.imagesForManifest = this.imgElements.map(el => {
+    this.manifestImages = this.imgElements.map(el => {
       return { id: el.substr(0, el.lastIndexOf('.')), src: assetPath + el }
     })
-    this.queue = new createjs.LoadQueue();
-    this.queue.on("complete", this.handleComplete.bind(this))
-    this.queue.loadManifest( this.imagesForManifest );
+    this.loadQueue();
   }
 
-  handleComplete() {    
-    this.imagesForManifest.forEach(img => {
-      const image = this.queue.getResult(img.id)
-      // document.body.appendChild(image);
+  loadQueue() {
+    this.loader = new createjs.LoadQueue();
+    this.loader.on("complete", this.handleComplete.bind(this));
+    this.loader.loadManifest( this.manifestImages );
+  }
+
+  handleComplete() {
+    this.createElements();
+  }
+
+  createElements() {
+    this.manifestImages.forEach(img => {
+      const obj = {};
+      const key = img.id;
+      obj[key] = new createjs.Bitmap(this.loader.getResult(img.id));
+      this.elements = Object.assign(obj, this.elements);
     });
+    this.stage.addChild(this.elements.image);
+    console.log(this.stage);
+  }
+
+  loadFrames() {
+    this.data.frames.forEach(frame => {
+      this.frames.push(frame);
+    })
   }
 
 }
