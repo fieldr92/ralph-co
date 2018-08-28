@@ -9,11 +9,10 @@ export default {
         {
           "type": "image",
           "src": "image.png",
-          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "x": 0,
           "y": 0,
-          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "sli2de", "direction": "right", "duration": 0, "delay": 500 }
+          "animation-in": { "type": "fade", "direction": "none", "duration": 500, "delay": 500 },
+          "animation-out": { "type": "fade", "direction": "none", "duration": 500, "delay": 500 }
         },
         {
           "type": "spritesheet",
@@ -21,8 +20,8 @@ export default {
           "start-time": 1000,
           "count": 100,
           "framerate": 25,
-          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "zoom", "direction": "none", "duration": 0, "delay": 500 }
+          "animation-in": { "type": "fade", "direction": "none", "duration": 500, "delay": 2500 },
+          "animation-out": { "type": "zoom", "direction": "none", "duration": 500, "delay": 500 }
         }
       ]
     },
@@ -32,34 +31,30 @@ export default {
         {
           "type": "image",
           "src": "image2.png",
-          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "x": 0,
           "y": 0,
-          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+          "animation-in": { "type": "fade", "direction": "none", "duration": 500, "delay": 500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 500, "delay": 1000 }
         },
         {
           "type": "image",
           "src": "image3.png",
-          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "x": 0,
           "y": 0,
-          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+          "animation-in": { "type": "fade", "direction": "none", "duration": 500, "delay": 2500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 500, "delay": 1000 }
         },
         {
           "type": "image",
           "src": "image4.png",
-          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "x": 0,
           "y": 0,
-          "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+          "animation-in": { "type": "fade", "direction": "none", "duration": 500, "delay": 4500 },
+          "animation-out": { "type": "slide", "direction": "right", "duration": 500, "delay": 1000 }
         },
         {
           "type": "text",
           "text-input": "hello world",
-          "sheen": { "type": "simple", "duration": 1000, "delay": 1000},
           "start-time": 1000,
           "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
           "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
