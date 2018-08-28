@@ -1,17 +1,18 @@
 import LoadElements from "./LoadElements";
 
 class Animations extends LoadElements {
-  constructor(width, height, data, element) {
-    this.width = width,
-    this.height = height,
-    this.data = data,
-    this.element = element
+  constructor(args) {
+    super(args);
+    this.width = args.width;
+    this.height = args.height;
+    this.data = args.data;
+    this.elements = args.elements;
   }
 
-  static fade() {
+  fade() {    
     return {
       in(width, height, delay, duration, element) {
-        
+              
       },
       out(width, height, delay, duration, element) {
 
@@ -19,7 +20,7 @@ class Animations extends LoadElements {
     }
   }
 
-  static slide() {
+  slide() {
     return {
       in(width, height, direction, delay, duration, element) {
 
@@ -30,7 +31,7 @@ class Animations extends LoadElements {
     }
   }
 
-  static zoom() {
+  zoom() {
     return {
       in(width, height, delay, duration, element) {
 
