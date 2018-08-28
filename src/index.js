@@ -12,10 +12,8 @@ export default class Banner {
     this.elements = {};
   }
 
-  init() {
-    console.log(this);
-    
-    this.stage = new createjs.Stage("stage");
+  init() {    
+    this.stage = new createjs.Stage(document.getElementById('stage'));
     // this.stage.enableMouseOver(10);
     this.pushAssetsToImgElements();
     this.createManifest();
@@ -62,15 +60,13 @@ export default class Banner {
       obj[key] = new createjs.Bitmap(this.loader.getResult(img.id));
       this.elements = Object.assign(obj, this.elements);
     });
-    
-    this.elements.image.alpha = 1;
 
-    // document.body.appendChild(this.elements.image);
     this.stage.addChild(this.elements.image);
     this.stage.addChild(this.elements.image2);
     this.stage.addChild(this.elements.image3);
     this.stage.addChild(this.elements.spritesheet);
     console.log(this.stage);
+    console.log(this);    
   }
 
   loadFrames() {
