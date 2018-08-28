@@ -1,5 +1,5 @@
 import data from './data/dataTest';
-import loadElements from './classes/loadElements';
+import LoadElements from './classes/LoadElements';
 
 class Banner {
   constructor({data}) {
@@ -14,9 +14,9 @@ class Banner {
   init() {    
     this.stage = new createjs.Stage(document.getElementById('stage'));
     createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
-    const elements = new loadElements(this.stage, this.width, this.height, this.data);
-    elements.createManifestImages();
-    elements.loadQueue();
+    const elements = new LoadElements(this.stage, this.width, this.height, this.data)
+      .createManifestImages()
+      .loadQueue();
   }
 
   handleTick(event) {    
