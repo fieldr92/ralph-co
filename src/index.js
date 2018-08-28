@@ -4,7 +4,6 @@ const assetPath = "./assets/";
 
 export default class Banner {
   constructor({ width, height, data }) {
-    this.stage;
     this.width = width;
     this.height = height;
     this.data = data;
@@ -14,19 +13,22 @@ export default class Banner {
   }
 
   init() {
-    this.stage = new createjs.Stage('stage');    
+    console.log(this);
+    
+    this.stage = new createjs.Stage("stage");
     // this.stage.enableMouseOver(10);
-    createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
     this.pushAssetsToImgElements();
     this.createManifest();
+    createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
   }
 
-  handleTick(event) {
+  handleTick(event) {    
     this.stage.update();
   }
 
   pushAssetsToImgElements() {
     this.imgElements.push(this.data.background);
+
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         if (layer.src) { this.imgElements.push(layer.src) }
@@ -42,8 +44,10 @@ export default class Banner {
   }
 
   loadQueue() {
-    this.loader = new createjs.LoadQueue();
+    this.loader = new createjs.LoadQueue(true);
     this.loader.on("complete", this.handleComplete.bind(this));
+    console.log(this.manifestImages);
+    
     this.loader.loadManifest( this.manifestImages );
   }
 
@@ -58,7 +62,14 @@ export default class Banner {
       obj[key] = new createjs.Bitmap(this.loader.getResult(img.id));
       this.elements = Object.assign(obj, this.elements);
     });
+    
+    this.elements.image.alpha = 1;
+
+    // document.body.appendChild(this.elements.image);
     this.stage.addChild(this.elements.image);
+    this.stage.addChild(this.elements.image2);
+    this.stage.addChild(this.elements.image3);
+    this.stage.addChild(this.elements.spritesheet);
     console.log(this.stage);
   }
 

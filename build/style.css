@@ -2,8 +2,9 @@
   margin: 0;
 }
 
-.canvas {
+#stage {
   width: 298px;
   height: 248px;
   border: 1px solid black;
+  overflow: hidden;
 }

@@ -11,7 +11,7 @@ export default {
           "x": 0,
           "y": 0,
           "animation-in": { "type": "fade", "direction": "none", "duration": 0, "delay": 500 },
-          "animation-out": { "type": "slide", "direction": "right", "duration": 0, "delay": 500 }
+          "animation-out": { "type": "sli2de", "direction": "right", "duration": 0, "delay": 500 }
         },
         {
           "type": "spritesheet",
