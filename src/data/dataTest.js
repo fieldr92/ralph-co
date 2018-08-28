@@ -1,5 +1,7 @@
 export default {
   "background": "background.png",
+  "width": '300px',
+  "height": '250px', 
   "frames": [
     {
       "duration": 4000,
