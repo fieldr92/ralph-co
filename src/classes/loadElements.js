@@ -1,4 +1,4 @@
-class loadElements {
+class LoadElements {
   constructor (stage, width, height, data) {
     this.stage = stage;
     this.width = width;
@@ -11,14 +11,11 @@ class loadElements {
 
   createManifestImages() {
     if (this.data.background) {
-      this.manifestImages.push({
-        id: this.data.background.substr(0, this.data.background.lastIndexOf('.')),
-        src: this.assetPath + this.data.background
-      });
+      this.manifestImages.push({ id: this.data.background.substr(0, this.data.background.lastIndexOf('.')), src: this.assetPath + this.data.background });
     }
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
-        if (layer.src) {
+        if (layer.type === 'image' && layer.src) {
           this.manifestImages.push({
             id: layer.src.substr(0, layer.src.lastIndexOf('.')),
             src: this.assetPath + layer.src
@@ -32,7 +29,7 @@ class loadElements {
   loadQueue() {
     this.loader = new createjs.LoadQueue();
     this.loader.on("complete", this.createElements.bind(this));
-    this.loader.loadManifest( this.manifestImages );
+    this.loader.loadManifest(this.manifestImages);
   }
 
   createElements() {
@@ -49,4 +46,4 @@ class loadElements {
 
 }
 
-export default loadElements;
+export default LoadElements;
