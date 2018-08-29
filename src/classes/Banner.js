@@ -10,8 +10,6 @@ export default class Banner {
   }
 
   createStage() {
-    console.log('hello');
-    
     this.stage = new createjs.Stage(document.getElementById('stage'));
     createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
     new LoadElements(this.stage, this.width, this.height, this.data)

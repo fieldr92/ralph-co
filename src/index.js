@@ -1,35 +1,28 @@
-import data from './data/dataTest';
-import LoadElements from './classes/LoadElements';
+import Banner from './classes/Banner';
 import Animations from './classes/Animations';
 
-class Banner {
-  constructor(data) {
-    this.width = data.width;
-    this.height = data.height;
-    this.data = data;
-    this.frames = [];
-    this.assetPath = "./assets/";
-  }
+const loadJSON = callback => {
+  const folderName = '../src/data/';
+  const fileName = 'data.json';
 
-  init() {
-    this.stage = new createjs.Stage(document.getElementById('stage'));
-    createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
-    new LoadElements(this.stage, this.width, this.height, this.data)
-      .createManifestImages()
-      .loadQueue();
-  }
+  const xobj = new XMLHttpRequest();
+  xobj.overrideMimeType('application/json');
+  xobj.open('GET', `${folderName}${fileName}`, true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(xobj.responseText);
+    }
+  };
+  xobj.send(null); 
+}
 
-  handleTick(event) {    
-    this.stage.update();
-  }
-
-  buildAnimations() {
-
-  }
-
+const init = () => {
+  loadJSON(response => {
+    const actual_JSON = JSON.parse(response);
+    new Banner(actual_JSON).createStage();
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Banner(data)
-  .init();
+  init();
 })
