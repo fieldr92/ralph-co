@@ -32,7 +32,6 @@ export default class Banner {
         const id = layer.src.substr(0, layer.src.lastIndexOf('.'));
         const path = this.assetPath + layer.src;
         const elementType = 'img';
-
         new Image(id, path, elementType, top, left);
       })
     })
@@ -40,7 +39,38 @@ export default class Banner {
   }
 
   animateFrames() {
-    this.data.frames.forEach
+    this.data.frames.forEach(frame => {
+      frame.layers.forEach(layer => {
+        let delayIn = layer['animation-in']['delay'];
+        let durationIn = layer['animation-in']['duration'];
+        let delayOut = layer['animation-out']['delay'];
+        let durationOut = layer['animation-out']['duration'];
+
+        switch (layer["animation-in"]["type"]) {
+          case 'fade':
+            this.timeline
+              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationIn, { opacity: 1 }, `+=${delayIn}`);
+            break;
+          default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
+            break;
+        }
+
+        switch (layer["animation-out"]["type"]) {
+          case 'fade':
+            this.timeline
+              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationOut, { opacity: 0 }, `+=${delayOut}`);
+            break;
+          default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
+            break;
+        }
+
+      })
+    })
+    return this;
+  }
+
+  start() {
+    this.timeline.play();
   }
 
 }
