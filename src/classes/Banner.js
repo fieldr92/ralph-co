@@ -1,4 +1,5 @@
 import LoadElements from './LoadElements';
+import Image from './Image';
 
 export default class Banner {
   constructor(data) {
@@ -6,18 +7,40 @@ export default class Banner {
     this.height = data.height;
     this.data = data;
     this.frames = [];
+    this.elementIds = [];
     this.assetPath = "./assets/";
+    this.timeline = new TimelineMax({ paused: true });
   }
 
-  createStage() {
-    this.stage = new createjs.Stage(document.getElementById('stage'));
-    createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
-    new LoadElements(this.stage, this.width, this.height, this.data)
-      .createManifestImages()
-      .loadQueue();
+  createIds() {
+    if (this.data.background) {
+      this.elementIds.push('#' + this.data.background.substr(0, this.data.background.lastIndexOf('.')));
+    }
+    this.data.frames.forEach(frame => {
+      frame.layers.forEach(layer => {
+        this.elementIds.push('#' + layer.src.substr(0, layer.src.lastIndexOf('.')));
+      })
+    })
+    return this; 
   }
 
-  handleTick(event) {    
-    this.stage.update();
+  createElements() {
+    this.data.frames.forEach(frame => {
+      frame.layers.forEach(layer => {
+        const top = layer.top;
+        const left = layer.left;
+        const id = layer.src.substr(0, layer.src.lastIndexOf('.'));
+        const path = this.assetPath + layer.src;
+        const elementType = 'img';
+
+        new Image(id, path, elementType, top, left);
+      })
+    })
+    return this;
   }
+
+  animateFrames() {
+    this.data.frames.forEach
+  }
+
 }
