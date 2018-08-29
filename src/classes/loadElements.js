@@ -106,7 +106,7 @@ class LoadElements {
           }
         })
       })
-      baseTime = baseTime + frame["duration"];
+      baseTime += frame["duration"];
     })
   }
 
