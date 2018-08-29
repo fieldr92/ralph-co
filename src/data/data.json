@@ -1,4 +1,4 @@
-export default {
+{
   "background": "background.png",
   "width": 300,
   "height": 250,
@@ -11,8 +11,8 @@ export default {
           "src": "image.png",
           "x": 0,
           "y": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 2500 }
+          "animation-in": { "type": "slide-right", "duration": 500, "delay": 500 },
+          "animation-out": { "type": "slide-right", "duration": 500, "delay": 2500 }
         },
         {
           "type": "image",
