@@ -65,34 +65,50 @@ class LoadElements {
               this.stage.addChild(this.elements[img.id]);
               this.elements[img.id].alpha = 0;
 
-              switch (layer["animation-in"]["type"]) {
+              switch (layer["animation-in"]["type"] && layer["animation-out"]["type"]) {
                 case "fade":
                   new createjs.Tween(this.elements[img.id])
                     .wait(delayIn)
-                    .to({alpha: 1}, animationIn);
-                  break;
-                
-                default: console.log(`${layer['animation-in']['type']} is not an animation type`);
-                  break;
-              }
-
-              switch (layer["animation-out"]["type"]) {
-                case "fade":
-                  new createjs.Tween(this.elements[img.id])
+                    .to({alpha: 1}, animationIn)
                     .wait(delayOut)
                     .to({alpha: 0}, animationOut);
                   break;
+                case "slide-right":
+                  new createjs.Tween(this.elements[img.id])
+                    .wait(delayIn)
+                    .to({alpha: 1, x: this.width}, 0)
+                    .to({x: 0}, animationIn)
+                    .wait(delayOut)
+                    .to({x: this.width}, animationOut);
+                  break;
+                case "slide-left":
+                  new createjs.Tween(this.elements[img.id])
+                    .to({alpha: 1, x: -this.width}, 0)
+                    .wait(delayIn)
+                    .to({x: 0}, animationIn)
+                    .wait(delayOut)
+                    .to({x: -this.width}, animationOut);
+                  break;
+                case "slide-up":
+                  new createjs.Tween(this.elements[img.id])
+                    .to({alpha: 1, y: this.height}, 0)
+                    .wait(delayIn)
+                    .to({y: 0}, animationIn)
+                    .wait(delayOut)
+                    .to({y: this.height}, animationOut);
+                  break;
+                case "slide-down":
+                  new createjs.Tween(this.elements[img.id])
+                    .to({alpha: 1, y: -this.height}, 0)
+                    .wait(delayIn)
+                    .to({y: 0}, animationIn)
+                    .wait(delayOut)
+                    .to({y: -this.height}, animationOut);
+                  break;
                 
-                default: console.log(`${layer['animation-in']['type']} is not an animation type`);
+                default: console.log(`Animation-in "${layer['animation-in']['type']}" and animation-out "${layer['animation-out']['type']}" either do not match or are not an animation type. Values need to match for this DCO.`);
                   break;
               }
-
-
-              // new createjs.Tween(this.elements[img.id])
-              //   .wait(delayIn)
-              //   .to({alpha: 1}, layer["animation-in"]["duration"])
-              //   .wait(delayOut)
-              //   .to({alpha: 0}, layer["animation-out"]["duration"]);
             }
           })
         })
