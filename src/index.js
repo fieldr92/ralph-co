@@ -23,7 +23,8 @@ const init = () => {
     new Banner(actual_JSON)
       .createIds()
       .createElements()
-      .animateFrames();
+      .animateFrames()
+      .start();
   })
 }
 
