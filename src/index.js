@@ -16,8 +16,7 @@ class Banner {
     createjs.Ticker.addEventListener('tick', this.handleTick.bind(this));
     new LoadElements(this.stage, this.width, this.height, this.data)
       .createManifestImages()
-      .loadQueue()
-      .animator();
+      .loadQueue();
   }
 
   handleTick(event) {    
