@@ -4,53 +4,20 @@
   "height": 250,
   "frames": [
     {
-      "duration": 4000,
+      "duration": 4,
       "layers": [
         {
           "type": "image",
           "src": "image.png",
           "top": 0,
           "left": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 2500 }
-        },
-        {
-          "type": "image",
-          "src": "spritesheet.png",
-          "top": 0,
-          "left": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 2500 }
-        }
-      ]
-    }
-    ,
-    {
-      "duration": 4000,
-      "layers": [
-        {
-          "type": "image",
-          "src": "image4.png",
-          "top": 0,
-          "left": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 1500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 2000 }
-        },
-        {
-          "type": "image",
-          "src": "image2.png",
-          "top": 0,
-          "left": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 3000 }
-        },
-        {
-          "type": "image",
-          "src": "image3.png",
-          "top": 0,
-          "left": 0,
-          "animation-in": { "type": "fade", "duration": 500, "delay": 500 },
-          "animation-out": { "type": "fade", "duration": 500, "delay": 3000 }
+          "animations": [
+            {
+              "type": "{ opacity: 1 }",
+              "delay": 1,
+              "duration": 0.5
+            }
+          ]
         }
       ]
     }

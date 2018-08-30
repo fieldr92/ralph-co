@@ -6,10 +6,10 @@ export default class Banner {
     this.width = data.width;
     this.height = data.height;
     this.data = data;
-    this.frames = [];
+    // this.frames = [];
     this.elementIds = [];
     this.assetPath = "./assets/";
-    this.timeline = new TimelineMax({ paused: true });
+    this.timeline = new TimelineLite({ paused: true });
   }
 
   createIds() {
@@ -41,28 +41,35 @@ export default class Banner {
   animateFrames() {
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
-        let delayIn = layer['animation-in']['delay'];
-        let durationIn = layer['animation-in']['duration'];
-        let delayOut = layer['animation-out']['delay'];
-        let durationOut = layer['animation-out']['duration'];
+        // let delayIn = layer['animation-in']['delay'];
+        // let durationIn = layer['animation-in']['duration'];
+        // let delayOut = layer['animation-out']['delay'];
+        // let durationOut = layer['animation-out']['duration'];
 
-        switch (layer["animation-in"]["type"]) {
-          case 'fade':
-            this.timeline
-              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationIn, { opacity: 1 }, `+=${delayIn}`);
-            break;
-          default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
-            break;
-        }
+        // Way DCO 3.0 works... each layer has an animations array in which you input the animations you want (therefore can be more than just in and out)
 
-        switch (layer["animation-out"]["type"]) {
-          case 'fade':
-            this.timeline
-              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationOut, { opacity: 0 }, `+=${delayOut}`);
-            break;
-          default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
-            break;
-        }
+        layer.animations.forEach(animation => {
+          this.timeline
+            .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, animation["duration"], animation["type"], `${animation["delay"]}`);
+        })
+
+        // switch (layer["animation-in"]["type"]) {
+        //   case 'fade':
+        //     this.timeline
+        //       .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationIn, { opacity: 1 }, `+=${delayIn}`);
+        //     break;
+        //   default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
+        //     break;
+        // }
+
+        // switch (layer["animation-out"]["type"]) {
+        //   case 'fade':
+        //     this.timeline
+        //       .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationOut, { opacity: 0 }, `+=${delayOut}`);
+        //     break;
+        //   default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
+        //     break;
+        // }
 
       })
     })
