@@ -8,11 +8,11 @@
       "layers": [
         {
           "type": "spritesheet",
-          "src": "spritesheet2.png",
-          "playDelay": 1,
-          "spriteWidth": 3900, 
-          "noRows": 1,
-          "stopDelay": 2,
+          "src": "ss.png",
+          "playDelay": 0,
+          "spriteWidth": 3900,
+          "noRows": 8,
+          "stopDelay": 4,
           "countPerRow": 13,
           "top": 0,
           "left": 0
