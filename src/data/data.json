@@ -4,7 +4,7 @@
   "height": 250,
   "frames": [
     {
-      "duration": 4,
+      "duration": 3,
       "layers": [
         {
           "type": "image",
@@ -12,11 +12,43 @@
           "top": 0,
           "left": 0,
           "animations": [
-            {
-              "type": "{ opacity: 1 }",
-              "delay": 1,
-              "duration": 0.5
-            }
+            { "style": { "opacity": 1 }, "delay": 1, "duration": 0.5 },
+            { "style": { "x": 300 }, "delay": 3, "duration": 0.5 }
+          ]
+        },
+        {
+          "type": "spritesheet",
+          "src": "spritesheet2.png",
+          "playDelay": 0,
+          "spriteWidth": 3900, 
+          "noRows": 1,
+          "stopDelay": 10,
+          "countPerRow": 13,
+          "top": 0,
+          "left": 0
+        }
+      ]
+    },
+    {
+      "duration": 4,
+      "layers": [
+        {
+          "type": "image",
+          "src": "image3.png",
+          "top": 0,
+          "left": 0,
+          "animations": [
+            { "style": { "x": 300, "opacity": 1 }, "delay": 0, "duration": 0 },
+            { "style": { "x": 0 }, "delay": 1, "duration": 0.5 }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "image2.png",
+          "top": 0,
+          "left": 0,
+          "animations": [
+            { "style": { "opacity": 1 }, "delay": 1, "duration": 0.5 }
           ]
         }
       ]
