@@ -6,7 +6,6 @@ export default class Banner {
     this.width = data.width;
     this.height = data.height;
     this.data = data;
-    // this.frames = [];
     this.elementIds = [];
     this.assetPath = "./assets/";
     this.timeline = new TimelineLite({ paused: true });
@@ -39,39 +38,30 @@ export default class Banner {
   }
 
   animateFrames() {
+    let previousFramesDuration = 0;
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
-        // let delayIn = layer['animation-in']['delay'];
-        // let durationIn = layer['animation-in']['duration'];
-        // let delayOut = layer['animation-out']['delay'];
-        // let durationOut = layer['animation-out']['duration'];
-
-        // Way DCO 3.0 works... each layer has an animations array in which you input the animations you want (therefore can be more than just in and out)
-
-        layer.animations.forEach(animation => {
-          this.timeline
-            .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, animation["duration"], animation["type"], `${animation["delay"]}`);
-        })
-
-        // switch (layer["animation-in"]["type"]) {
-        //   case 'fade':
-        //     this.timeline
-        //       .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationIn, { opacity: 1 }, `+=${delayIn}`);
-        //     break;
-        //   default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
-        //     break;
-        // }
-
-        // switch (layer["animation-out"]["type"]) {
-        //   case 'fade':
-        //     this.timeline
-        //       .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, durationOut, { opacity: 0 }, `+=${delayOut}`);
-        //     break;
-        //   default: console.log(`Animation-in type "${layer['animation-in']['type']}" not recognised.`);
-        //     break;
-        // }
-
+        switch (layer["type"]) {
+          case "image":
+            layer.animations.forEach(animation => {
+              this.timeline
+                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, animation["duration"], animation["style"], `${previousFramesDuration + animation["delay"]}`);
+            })
+            break;
+          case "spritesheet":
+            for (let i = 0; i < layer["noRows"]; i++) {
+              this.timeline
+                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { opacity: 1 }, layer["playDelay"])
+                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 1, { x: this.width - layer["spriteWidth"], ease:SteppedEase.config(layer["countPerRow"] - 1) })
+                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { opacity: 0 }, layer["stopDelay"]);
+            }
+            break;
+          default:
+            console.log(`"${layer['type']}" is not a layer type.`);
+            break;
+        }
       })
+      previousFramesDuration += frame["duration"];
     })
     return this;
   }
