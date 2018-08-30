@@ -7,25 +7,25 @@
       "duration": 3,
       "layers": [
         {
+          "type": "spritesheet",
+          "src": "spritesheet2.png",
+          "playDelay": 1,
+          "spriteWidth": 3900, 
+          "noRows": 1,
+          "stopDelay": 2,
+          "countPerRow": 13,
+          "top": 0,
+          "left": 0
+        },
+        {
           "type": "image",
           "src": "image.png",
           "top": 0,
           "left": 0,
           "animations": [
-            { "style": { "opacity": 1 }, "delay": 1, "duration": 0.5 },
+            { "style": { "opacity": 1 }, "delay": 0, "duration": 0.5 },
             { "style": { "x": 300 }, "delay": 3, "duration": 0.5 }
           ]
-        },
-        {
-          "type": "spritesheet",
-          "src": "spritesheet2.png",
-          "playDelay": 0,
-          "spriteWidth": 3900, 
-          "noRows": 1,
-          "stopDelay": 10,
-          "countPerRow": 13,
-          "top": 0,
-          "left": 0
         }
       ]
     },

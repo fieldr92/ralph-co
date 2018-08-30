@@ -51,7 +51,7 @@ export default class Banner {
           case "spritesheet":
             for (let i = 0; i < layer["noRows"]; i++) {
               this.timeline
-                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { opacity: 1 }, layer["playDelay"])
+                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0, { opacity: 1 }, layer["playDelay"])
                 .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 1, { x: this.width - layer["spriteWidth"], ease:SteppedEase.config(layer["countPerRow"] - 1) })
                 .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { opacity: 0 }, layer["stopDelay"]);
             }
