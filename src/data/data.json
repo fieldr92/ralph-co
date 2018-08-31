@@ -8,18 +8,18 @@
       "layers": [
         {
           "type": "spritesheet",
-          "src": "ss.png",
-          "playDelay": 0,
-          "spriteWidth": 3900,
-          "noRows": 8,
-          "stopDelay": 6,
-          "countPerRow": 13,
+          "src": "f3_spritesheet.png",
           "top": 0,
-          "left": 0
+          "left": 0,
+          "framerate": 24,
+          "spriteWidth": 3900,
+          "spriteHeight": 1250,
+          "animation-in": { "style": { "opacity": 1 }, "delay": 0, "duration": 0 },
+          "animation-out": { "style": { "opacity": 0 }, "delay": 3, "duration": 0.5 }
         },
         {
           "type": "image",
-          "src": "image.png",
+          "src": "image3.png",
           "top": 0,
           "left": 0,
           "animations": [
