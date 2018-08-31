@@ -19,6 +19,7 @@ const init = () => {
   loadJSON(response => {
     const actual_JSON = JSON.parse(response);
     new Banner(actual_JSON)
+      .createBackground()
       .createElements()
       .animateFrames()
       .start();
