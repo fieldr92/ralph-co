@@ -6,8 +6,16 @@ export default class Banner {
     this.width = data.width;
     this.height = data.height;
     this.data = data;
-    this.assetPath = "./assets/";
+    this.assetPath = './assets/';
     this.timeline = new TimelineLite({ paused: true });
+  }
+
+  createBackground() {
+    const background = this.data.background;
+    const backgroundId = `#${background.substr(0, background.lastIndexOf('.'))}`
+    new Image(background.substr(0, background.lastIndexOf('.')), this.assetPath + background, 0, 0);
+    this.timeline.to(backgroundId, 0, { opacity: 1 });
+    return this;
   }
 
   createElements() {
@@ -17,8 +25,7 @@ export default class Banner {
         const left = layer.left;
         const id = layer.src.substr(0, layer.src.lastIndexOf('.'));
         const path = this.assetPath + layer.src;
-        const elementType = 'img';
-        new Image(id, path, elementType, top, left);
+        new Image(id, path, top, left);
       })
     })
     return this;
@@ -31,13 +38,13 @@ export default class Banner {
         switch (layer["type"]) {
           case "image":
             layer.animations.forEach(animation => {
-              new Animation(layer, animation, frameDelay, this.width, this.height, this.timeline)
+              new Animation(layer, animation, frameDelay, this.timeline)
                 .styleChange();
             })
             break;
           case "spritesheet":
-            new Animation(layer, null, frameDelay, this.width, this.height, this.timeline)
-                .playSprite();
+            new Animation(layer, null, frameDelay, this.timeline)
+                .playSprite(this.width, this.height);
             break;
           default:
             console.log(`"${layer['type']}" is not a layer type.`);
