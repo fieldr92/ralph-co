@@ -12,7 +12,7 @@
           "playDelay": 0,
           "spriteWidth": 3900,
           "noRows": 8,
-          "stopDelay": 4,
+          "stopDelay": 6,
           "countPerRow": 13,
           "top": 0,
           "left": 0

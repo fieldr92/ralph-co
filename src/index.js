@@ -1,6 +1,4 @@
-// import Banner from './classes/Banner-old';
 import Banner from './classes/Banner';
-import Animations from './classes/Animations';
 
 const loadJSON = callback => {
   const folderName = '../src/data/';
@@ -21,7 +19,6 @@ const init = () => {
   loadJSON(response => {
     const actual_JSON = JSON.parse(response);
     new Banner(actual_JSON)
-      .createIds()
       .createElements()
       .animateFrames()
       .start();
