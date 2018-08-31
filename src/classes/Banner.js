@@ -1,26 +1,13 @@
-import LoadElements from './LoadElements';
 import Image from './Image';
+import Animation from './Animation';
 
 export default class Banner {
   constructor(data) {
     this.width = data.width;
     this.height = data.height;
     this.data = data;
-    this.elementIds = [];
     this.assetPath = "./assets/";
     this.timeline = new TimelineLite({ paused: true });
-  }
-
-  createIds() {
-    if (this.data.background) {
-      this.elementIds.push('#' + this.data.background.substr(0, this.data.background.lastIndexOf('.')));
-    }
-    this.data.frames.forEach(frame => {
-      frame.layers.forEach(layer => {
-        this.elementIds.push('#' + layer.src.substr(0, layer.src.lastIndexOf('.')));
-      })
-    })
-    return this; 
   }
 
   createElements() {
@@ -38,34 +25,26 @@ export default class Banner {
   }
 
   animateFrames() {
-    let previousFramesDuration = 0;
+    let frameDelay = 0;
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         switch (layer["type"]) {
           case "image":
             layer.animations.forEach(animation => {
-              this.timeline
-                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, animation["duration"], animation["style"], `${previousFramesDuration + animation["delay"]}`);
+              new Animation(layer, animation, frameDelay, this.width, this.height, this.timeline)
+                .styleChange();
             })
             break;
           case "spritesheet":
-            this.timeline
-              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0, { opacity: 1, y: 0 }, layer["playDelay"]);
-            for (let i = 1; i <= layer["noRows"]; i++) {
-              let topPosition = i * -this.height;
-              this.timeline
-                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { x: this.width - layer["spriteWidth"], ease:SteppedEase.config(layer["countPerRow"] - 1) })
-                .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0, { top: topPosition, x: 0 })
-            }
-            this.timeline
-              .to(`#${layer.src.substr(0, layer.src.lastIndexOf('.'))}`, 0.5, { opacity: 0 }, layer["stopDelay"]);
+            new Animation(layer, null, frameDelay, this.width, this.height, this.timeline)
+                .playSprite();
             break;
           default:
             console.log(`"${layer['type']}" is not a layer type.`);
             break;
         }
       })
-      previousFramesDuration += frame["duration"];
+      frameDelay += frame["duration"];
     })
     return this;
   }
