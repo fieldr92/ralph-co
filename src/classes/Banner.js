@@ -21,8 +21,7 @@ export default class Banner {
   createElements() {
     this.data.frames.forEach(frame => {
       frame.layers.forEach(layer => {
-        const top = layer.top;
-        const left = layer.left;
+        const { top, left } = layer;
         const id = layer.src.substr(0, layer.src.lastIndexOf('.'));
         const path = this.assetPath + layer.src;
         new Image(id, path, top, left);
