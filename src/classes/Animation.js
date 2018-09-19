@@ -21,18 +21,20 @@ export default class Animation {
     const spriteOutDelay = `${this.frameDelay + this.layer["animation-out"]["delay"]}`;
     const spriteOutDuration = this.layer["animation-out"]["duration"];
 
-    this.timeline
+    const spriteTimeline = new TimelineMax();
+
+    spriteTimeline
       .to(this.elementId, spriteInDuration, this.layer["animation-in"]["style"], spriteInDelay);
 
     for (let i = 1; i <= noRows; i++) {
       const topPosition = -height * i;
       const spriteSpeed = (this.layer["spriteWidth"] / width) / this.layer["framerate"];
-      this.timeline
+      spriteTimeline
         .to(this.elementId, spriteSpeed, { x: width - this.layer["spriteWidth"], ease:SteppedEase.config((this.layer["spriteWidth"] / width) - 1) })
         .set(this.elementId, { top: topPosition, x: 0 });
     }
 
-    this.timeline
+    spriteTimeline
       .to(this.elementId, spriteOutDuration, this.layer["animation-out"]["style"], spriteOutDelay);
   }
 }

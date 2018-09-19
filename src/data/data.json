@@ -33,14 +33,40 @@
       "duration": 4,
       "layers": [
         {
+          "type": "spritesheet",
+          "src": "f2_spritesheet.png",
+          "top": 0,
+          "left": 0,
+          "framerate": 24,
+          "spriteWidth": 3900,
+          "spriteHeight": 1750,
+          "animation-in": { "style": { "opacity": 1 }, "delay": 0, "duration": 0 },
+          "animation-out": { "style": { "opacity": 0 }, "delay": 3, "duration": 0.5 }
+        },
+        {
           "type": "image",
-          "src": "image3.png",
+          "src": "image2.png",
           "top": 0,
           "left": 0,
           "animations": [
-            { "style": { "x": 300, "opacity": 1 }, "delay": 0, "duration": 0 },
-            { "style": { "x": 0 }, "delay": 1, "duration": 0.5 }
+            { "style": { "opacity": 1 }, "delay": 1, "duration": 0.5 }
           ]
+        }
+      ]
+    },
+    {
+      "duration": 4,
+      "layers": [
+        {
+          "type": "spritesheet",
+          "src": "f1_spritesheet.png",
+          "top": 0,
+          "left": 0,
+          "framerate": 24,
+          "spriteWidth": 3900,
+          "spriteHeight": 1750,
+          "animation-in": { "style": { "opacity": 1 }, "delay": 0, "duration": 0 },
+          "animation-out": { "style": { "opacity": 0 }, "delay": 3, "duration": 0.5 }
         },
         {
           "type": "image",
