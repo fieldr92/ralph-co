@@ -4,7 +4,7 @@ export default class Animation {
     this.animation = animation;
     this.frameDelay = frameDelay;
     this.timeline = timeline;
-    this.elementId = `#${this.layer.src.substr(0, this.layer.src.lastIndexOf('.'))}`;
+    this.elementId = `#${this.layer.src.match(/[a-z0-9_]*/i)}`;
   }
 
   styleChange() {
