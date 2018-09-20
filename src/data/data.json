@@ -1,5 +1,5 @@
 {
-  "background": "background.png",
+  "background": "#FFFFFF",
   "width": 300,
   "height": 250,
   "frames": [
@@ -8,14 +8,14 @@
       "layers": [
         {
           "type": "spritesheet",
-          "src": "f3_spritesheet.png",
+          "src": "f1_spritesheet.png",
           "top": 0,
           "left": 0,
           "framerate": 24,
           "spriteWidth": 3900,
           "spriteHeight": 1250,
           "animation-in": { "style": { "opacity": 1 }, "delay": 0, "duration": 0 },
-          "animation-out": { "style": { "opacity": 0 }, "delay": 3, "duration": 0.5 }
+          "animation-out": { "style": { "opacity": 0 }, "delay": 2.5, "duration": 0.5 }
         },
         {
           "type": "image",
@@ -59,7 +59,7 @@
       "layers": [
         {
           "type": "spritesheet",
-          "src": "f1_spritesheet.png",
+          "src": "f3_spritesheet.png",
           "top": 0,
           "left": 0,
           "framerate": 24,
