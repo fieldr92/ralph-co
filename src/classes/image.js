@@ -5,7 +5,7 @@ export default class Image {
     this.element = document.createElement('img');
     this.element.setAttribute('id', this.id);
     this.element.setAttribute('src', path);
-    this.element.setAttribute('style', `top: ${top}; left ${left}; opacity: 0`);
+    this.element.setAttribute('style', `top: ${top}px; left: ${left}px; opacity: 0`);
     document.getElementById('stage').append(this.element);
   }
 }
