@@ -2,16 +2,17 @@ import Image from './Image';
 import Animation from './Animation';
 
 export default class Banner {
-  constructor(data) {
-    this.width = data.width;
-    this.height = data.height;
-    this.data = data;
+  constructor({ background, width, height, frames }) {
+    this.background = background;
+    this.width = width;
+    this.height = height;
+    this.frames = frames;
     this.assetPath = './assets/';
     this.timeline = new TimelineLite({ paused: true });
   }
 
   createBackground() {
-    const background = this.data.background;
+    const background = this.background;
     const backgroundId = `#${background.match(/[a-z]*/i)}`;
 
     if (background.match(/[a-z]*?\.png/)) {
@@ -27,7 +28,7 @@ export default class Banner {
   }
 
   createElements() {
-    this.data.frames.forEach(frame => {
+    this.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         const { top, left } = layer;
         const id = layer.src.match(/[a-z0-9_]*/i);
@@ -40,7 +41,7 @@ export default class Banner {
 
   animateFrames() {
     let frameDelay = 0;
-    this.data.frames.forEach(frame => {
+    this.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         switch (layer["type"]) {
           case "image":
