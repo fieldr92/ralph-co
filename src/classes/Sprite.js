@@ -23,19 +23,7 @@ export default class Sprite extends Animation {
       spriteTimeline
         .to(this.elementId, spriteInDuration, this.layer["animation-in"]["style"], spriteInDelay)
         .to(this.elementId, spriteSpeed, { x: width - this.layer["spriteWidth"], ease:SteppedEase.config((this.layer["spriteWidth"] / width) - 1) })
-        .set(this.elementId, { top: topPosition, x: 0 });
-
-      // if (i === 1) {
-      //   spriteTimeline
-      //     .to(this.elementId, spriteInDuration, this.layer["animation-in"]["style"], spriteInDelay)
-      //     .to(this.elementId, spriteSpeed, { x: width - this.layer["spriteWidth"], ease:SteppedEase.config((this.layer["spriteWidth"] / width) - 1) })
-      //     .set(this.elementId, { top: topPosition, x: 0 });
-      // } else {
-      //   spriteTimeline
-      //     .to(this.elementId, spriteSpeed, { x: width - this.layer["spriteWidth"], ease:SteppedEase.config((this.layer["spriteWidth"] / width) - 1) })
-      //     .set(this.elementId, { top: topPosition, x: 0 });
-      // }
-      
+        .set(this.elementId, { top: topPosition, x: 0 });      
     }
 
     spriteTimeline
