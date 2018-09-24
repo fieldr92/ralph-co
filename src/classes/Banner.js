@@ -1,5 +1,6 @@
 import Image from './Image';
 import Animation from './Animation';
+import Sprite from './Sprite';
 
 export default class Banner {
   constructor({ background, width, height, frames }) {
@@ -29,7 +30,7 @@ export default class Banner {
     } else {
       console.log('Background not a image or color code');
     }
-    
+
     return this;
   }
 
@@ -60,8 +61,8 @@ export default class Banner {
             })
             break;
           case "spritesheet":
-            new Animation(layer, null, frameDelay, this.timeline)
-                .playSprite(this.width, this.height);
+            new Sprite(layer, null, frameDelay, this.timeline)
+              .playSprite(this.width, this.height);
             break;
           default:
             console.log(`"${layer['type']}" is not a layer type.`);

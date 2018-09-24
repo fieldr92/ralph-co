@@ -122,7 +122,7 @@
           "animations": [
             { "style": { "opacity": 1 }, "delay": 0, "duration": 0.5 },
             { "style": { "x": 160 }, "delay": 3, "duration": 0.2 },
-            { "style": { "x": 300 }, "delay": 3.9, "duration": 1.2 }
+            { "style": { "ease": "Power1.easeIn", "x": 300 }, "delay": 3.6, "duration": 1.1 }
           ]
         }
       ]
