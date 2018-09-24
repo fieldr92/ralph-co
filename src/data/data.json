@@ -24,7 +24,7 @@
         {
           "type": "spritesheet",
           "src": "f1_spritesheet.png",
-          "top": 0,
+          "top": -4,
           "left": 0,
           "framerate": 25,
           "spriteWidth": 3900,

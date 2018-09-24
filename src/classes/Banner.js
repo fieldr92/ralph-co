@@ -12,7 +12,7 @@ export default class Banner {
 
   createBackground() {
     const background = this.data.background;
-    const backgroundId = `#${background.substr(0, background.lastIndexOf('.'))}`;
+    const backgroundId = `#${background.match(/[a-z]*/i)}`;
 
     if (background.match(/[a-z]*?\.png/)) {
     new Image(background.match(/[a-z]*/i), this.assetPath + background, 0, 0);
