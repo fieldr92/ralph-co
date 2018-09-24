@@ -1,5 +1,5 @@
 export default class Image {
-  constructor(id, path, top = 0, left = 0) {
+  constructor({ id, path, top = 0, left = 0 }) {
     this.id = id;
     this.path = path;
     this.element = document.createElement('img');
