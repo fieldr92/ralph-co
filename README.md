@@ -1,4 +1,4 @@
-# RalphCO - a mini expandable banner animator
+# RalphCO - an expandable banner animator
 
 To install / run
 - run `yarn` to install dependencies
