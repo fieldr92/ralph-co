@@ -1,7 +1,7 @@
 import Banner from './classes/Banner';
 
 const loadJSON = callback => {
-  const folderName = '../src/data/';
+  const folderName = '../';
   const fileName = 'data.json';
 
   const xobj = new XMLHttpRequest();

@@ -29,5 +29,4 @@ export default class Sprite extends Animation {
     spriteTimeline
       .to(this.elementId, spriteOutDuration, this.layer["animation-out"]["style"], spriteOutDelay);
   }
-
 }

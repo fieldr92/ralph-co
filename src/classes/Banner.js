@@ -14,7 +14,6 @@ export default class Banner {
 
   createBackground() {
     const backgroundId = `#${this.background.match(/[a-z]*/i)}`;
-
     const backgroundInfo = {
       id: this.background.match(/[a-z0-9_]*/i),
       path: this.assetPath + this.background,
@@ -77,5 +76,4 @@ export default class Banner {
   start() {
     this.timeline.play();
   }
-
 }
