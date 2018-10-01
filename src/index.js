@@ -1,29 +1,22 @@
 import Banner from './classes/Banner';
 
-const loadJSON = callback => {
-  const folderName = '../';
-  const fileName = 'data.json';
+const jsonFile = `data.json`;
 
-  const xobj = new XMLHttpRequest();
-  xobj.overrideMimeType('application/json');
-  xobj.open('GET', `${folderName}${fileName}`, true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null); 
+const loadJSON = (file) => {
+  return fetch(file)
+    .then(res => res.json())
+    .catch(err => console.log(err));
 }
 
 const init = () => {
-  loadJSON(response => {
-    const actual_JSON = JSON.parse(response);
-    new Banner(actual_JSON)
-      .createBackground()
-      .createElements()
-      .animateFrames()
-      .start();
-  })
+  loadJSON(jsonFile)
+    .then(data => {
+      new Banner(data)
+        .createBackground()
+        .createElements()
+        .animateFrames()
+        .start();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
