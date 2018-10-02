@@ -1,5 +1,6 @@
 # RalphCO - an expandable banner animator
 
 To install / run
-- run `yarn` to install dependencies
-- run `yarn start` to run webpack and host banner (http://localhost:8080/build/)
+- `yarn` to install dependencies
+- `yarn build` to build bundle.js file
+- `yarn serve` to host banner (http://localhost:3000)
