@@ -4,5 +4,5 @@ To install / run
 - `yarn` to install dependencies
 - `yarn serve` to compile and host banner (http://localhost:3000)
 
-To build bundle.js file
+To compile files into build folder
 - `yarn build`
