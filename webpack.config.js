@@ -8,11 +8,10 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
-    publicPath: path.resolve(__dirname, 'build'),
     contentBase: path.join(__dirname, 'build'),
+    port: 3000,
     historyApiFallback: true,
-    compress: true,
-    port: 3000
+    compress: true
   },
   module: {
     rules: 
