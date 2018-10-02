@@ -1,3 +1,4 @@
+import { TimelineMax, SteppedEase } from "gsap";
 import Animation from './Animation';
 
 export default class Sprite extends Animation {

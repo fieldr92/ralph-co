@@ -1,3 +1,5 @@
+import { TimelineLite } from "gsap";
+
 import Image from './Image';
 import Animation from './Animation';
 import Sprite from './Sprite';
