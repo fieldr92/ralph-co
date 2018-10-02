@@ -1,6 +1,7 @@
 import Banner from './classes/Banner';
+import './style.css';
 
-const jsonFile = `data.json`;
+const jsonFile = `./data/data.json`;
 
 const init = () => {
   loadJSON(jsonFile).then(data => {
