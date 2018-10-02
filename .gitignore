@@ -1,4 +1,4 @@
 node_modules
-build/bundle.js
+build
 yarn-error.log
 .DS_Store
