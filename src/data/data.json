@@ -7,7 +7,7 @@
       "layers": [
         {
           "type": "background",
-          "src": "background.png",
+          "src": "#ffffff",
           "top": 0,
           "left": 0,
           "animations": [

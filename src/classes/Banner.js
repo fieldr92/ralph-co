@@ -35,8 +35,7 @@ export default class Banner {
           top: layer.top,
           left: layer.left,
           tag: 'div',
-          id: `background${i}`,
-          path: ''
+          id: `background${i}`
         };
 
         switch (layer["type"]) {
