@@ -1,4 +1,4 @@
-export default class Image {
+export default class ImageElements {
   constructor({ id, path, top = 0, left = 0 }) {
     this.id = id;
     this.path = path;

@@ -1,6 +1,6 @@
 import { TimelineLite } from "gsap";
 
-import Image from './Image';
+import ImageElements from './ImageElements';
 import Animation from './Animation';
 import Sprite from './Sprite';
 
@@ -14,27 +14,6 @@ export default class Banner {
     this.timeline = new TimelineLite({ paused: true });
   }
 
-  createBackground() {
-    const backgroundId = `#${this.background.match(/[a-z]*/i)}`;
-    const backgroundInfo = {
-      id: this.background.match(/[a-z0-9_]*/i),
-      path: this.assetPath + this.background,
-      top: 0,
-      left: 0
-    }
-
-    if (this.background.match(/[a-z]*?\.png/)) {
-      new Image(backgroundInfo);
-      this.timeline.to(backgroundId, 0, { opacity: 1 });
-    } else if (this.background.match(/#[a-f0-9]{6}/i)) {
-      document.getElementById('stage').style.backgroundColor = background;
-    } else {
-      console.log('Background not a image or color code');
-    }
-
-    return this;
-  }
-
   createElements() {
     this.frames.forEach(frame => {
       frame.layers.forEach(layer => {
@@ -44,7 +23,7 @@ export default class Banner {
           id: layer.src.match(/[a-z0-9_]*/i),
           path: this.assetPath + layer.src
         }
-        new Image(imageInfo);
+        new ImageElements(imageInfo);
       })
     })
     return this;
