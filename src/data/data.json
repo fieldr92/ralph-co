@@ -110,9 +110,9 @@
         },
         {
           "type": "image",
-          "src": "cta.png",
-          "top": 190,
-          "left": 80,
+          "src": "cta2.png",
+          "top": 0,
+          "left": 0,
           "animations": [
             { "style": { "opacity": 1 }, "delay": 5, "duration": 0.5 }
           ]
