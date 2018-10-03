@@ -2,8 +2,8 @@ import { TimelineMax, SteppedEase } from "gsap";
 import Animation from './Animation';
 
 export default class Sprite extends Animation {
-  constructor(layer, animation, frameDelay, timeline) {
-    super(layer, animation, frameDelay, timeline)
+  constructor(layer, animation, frameDelay, timeline, elementId) {
+    super(layer, animation, frameDelay, timeline, elementId)
   }
 
   playSprite(width, height) {    

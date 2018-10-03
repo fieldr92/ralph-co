@@ -1,8 +1,22 @@
 {
-  "background": "background.png",
   "width": 300,
   "height": 250,
   "frames": [
+    {
+      "duration": 0,
+      "layers": [
+        {
+          "type": "background",
+          "src": "background.png",
+          "top": 0,
+          "left": 0,
+          "animations": [
+            { "style": { "opacity": 1 }, "delay": 0, "duration": 0 },
+            { "style": { "opacity": 0 }, "delay": 8, "duration": 0.5 }
+          ]
+        }
+      ]
+    },
     {
       "duration": 2,
       "layers": [

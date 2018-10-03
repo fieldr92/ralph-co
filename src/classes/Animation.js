@@ -1,10 +1,10 @@
 export default class Animation {
-  constructor(layer, animation, frameDelay, timeline) {
+  constructor(layer, animation, frameDelay, timeline, elementId) {
     this.layer = layer;
     this.animation = animation;
     this.frameDelay = frameDelay;
     this.timeline = timeline;
-    this.elementId = `#${this.layer.src.match(/[a-z0-9_]*/i)}`;
+    this.elementId = elementId;
   }
 
   styleChange() {
