@@ -15,6 +15,11 @@ module.exports = {
     historyApiFallback: true,
     compress: true
   },
+  resolve: {
+    alias: {
+      createjs: 'createjs/builds/1.0.0/createjs.js'
+    }
+  },
   module: {
     rules: 
     [
@@ -30,6 +35,13 @@ module.exports = {
         use: [
           { loader: 'style-loader'},
           { loader: 'css-loader' }
+        ]
+      },
+      {
+        test: /node_modules[/\\]createjs/,
+        loaders: [
+          'imports-loader?this=>window',
+          'exports-loader?window.createjs'
         ]
       }
     ]
