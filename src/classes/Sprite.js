@@ -18,7 +18,7 @@ export default class Sprite extends Animation {
     const spriteTimeline = new TimelineMax();
 
     for (let i = 1; i <= noRows; i++) {
-      const topPosition = -height * i;
+      const topPosition = (-height * i) + this.layer.top;
       const spriteSpeed = (this.layer["spriteWidth"] / width) / this.layer["framerate"];
 
       spriteTimeline
