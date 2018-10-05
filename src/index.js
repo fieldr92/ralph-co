@@ -16,7 +16,7 @@ async function init() {
       .animateFrames()
       .start();
   } catch (err) {
-    console.log('BUILD ERROR:', err);
+    console.log('BUILD', err);
   }
 }
 
@@ -24,7 +24,7 @@ const loadJSON = file => {
   return fetch(file)
     .then(res => res.json())
     .catch(err => {
-      throw new Error('ERROR', err)
+      throw new Error(err)
     });
 }
 

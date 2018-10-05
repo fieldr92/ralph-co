@@ -22,7 +22,7 @@ preload() {
 
   handleComplete() {
     console.log(this.queue);
-    const image = this.queue.getResult("cta2");
+    const image = this.queue.getResult("cta");
     console.log(image);
   }
 }
