@@ -8,7 +8,7 @@ export default class Loader {
     this.queue = new createjs.LoadQueue(true);
   }
 
-  preload() {
+preload() {
     this.frames.forEach(frame => {
       frame.layers.forEach(layer => {
         if (layer.src.match(/[a-z]*?\.png/)) {
