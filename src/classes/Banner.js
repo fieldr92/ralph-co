@@ -5,8 +5,7 @@ import Animation from './Animation';
 import Sprite from './Sprite';
 
 export default class Banner {
-  constructor({ background, width, height, frames }, queue) {
-    this.background = background;
+  constructor({ width, height, frames }, queue) {
     this.width = width;
     this.height = height;
     this.frames = frames;
@@ -17,34 +16,34 @@ export default class Banner {
   createElements() {
     this.frames.forEach(frame => {
       frame.layers.forEach((layer, i) => {
+        const imgInfo = {
+          top: layer.top,
+          left: layer.left,
+          id: layer.src.match(/[a-z0-9_]*/i),
+          path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
+        };
+        const spriteInfo = {
+          top: layer.top,
+          left: layer.left,
+          width: layer.spriteWidth,
+          height: layer.spriteHeight,
+          id: layer.src.match(/[a-z0-9_]*/i),
+          path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
+        };
+        const divInfo = {
+          top: layer.top,
+          left: layer.left,
+          tag: 'div',
+          id: `background${i}`
+        };
         switch (layer["type"]) {
           case "image":
-            const imgInfo = {
-              top: layer.top,
-              left: layer.left,
-              id: layer.src.match(/[a-z0-9_]*/i),
-              path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
-            };
             new DOMElement(imgInfo);
             break;
           case "spritesheet":
-            const spriteInfo = {
-              top: layer.top,
-              left: layer.left,
-              width: layer.spriteWidth,
-              height: layer.spriteHeight,
-              id: layer.src.match(/[a-z0-9_]*/i),
-              path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
-            };
             new DOMElement(spriteInfo);
             break;
           case "background":
-            const divInfo = {
-              top: layer.top,
-              left: layer.left,
-              tag: 'div',
-              id: `background${i}`
-            };
             if (layer.src.match(/[a-z]*?\.png/)) {
               new DOMElement(imgInfo);
             } else if (layer.src.match(/#[a-f0-9]{6}/i)) {
