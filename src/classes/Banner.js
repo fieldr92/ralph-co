@@ -51,7 +51,7 @@ export default class Banner {
             new DOMElement(divInfo);
             document.getElementById(divInfo.id).style.backgroundColor = layer.src;
           } else {
-            console.log('Background not a image or color code');
+            console.log('Background not a image or hex code');
           }
           break;
         default:

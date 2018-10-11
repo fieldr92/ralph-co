@@ -6,17 +6,16 @@ import './style.css';
 const queue = new createjs.LoadQueue(true);
 const jsonPath = `./data/`;
 const jsonFile = `data.json`;
-let json;
 const assetPath = './assets/';
 const items = [];
 const layers = [];
 
 async function init() {
   try {
-    json = await loadJSON(`${jsonPath}${jsonFile}`);
-    createItems(json);
-    createLayers(json);
-    loader(json);
+    const json = await loadJSON(`${jsonPath}${jsonFile}`);
+    pushItems(json);
+    pushLayers(json);
+    loadBanner(json);
   } catch (err) {
     console.log('BUILD', err);
   }
@@ -30,7 +29,7 @@ const loadJSON = file => {
     });
 }
 
-const loader = (json) => {
+const loadBanner = json => {
   queue.loadManifest(items);
   queue.on('complete', () => {
     new Banner(json, queue, layers)
@@ -40,7 +39,7 @@ const loader = (json) => {
   });
 }
 
-const createItems = (json) => {
+const pushItems = json => {
   json.frames.forEach(frame => {
     frame.layers.forEach(layer => {
       if (layer.src.match(/[a-z]*?\.png/)) {
@@ -50,7 +49,7 @@ const createItems = (json) => {
   });
 }
 
-const createLayers = (json) => {
+const pushLayers = json => {
   json.frames.forEach(frame => {
     frame.layers.forEach(layer => {
       layers.push(layer);
