@@ -46,7 +46,7 @@ export default class Banner {
           new DOMElement(spriteInfo);
           break;
         case "background":
-          if (layer.src.match(this.regex.img)) {
+          if (layer.src.match(this.regex.src)) {
             new DOMElement(imgInfo);
           } else if (layer.src.match(this.regex.hex)) {
             new DOMElement(divInfo);

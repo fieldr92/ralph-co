@@ -10,8 +10,8 @@ const assetPath = './assets/';
 const items = [];
 const layers = [];
 const regex = {
-  id: /[a-z0-9_]*/i,
-  img: /[a-z]*?\.png/,
+  id: /[a-z0-9_-]*/i,
+  src: /[a-z0-9_-]*?\.(png|jpg|gif)/,
   hex: /#[a-f0-9]{6}/i
 }
 
@@ -47,7 +47,7 @@ const loadBanner = json => {
 const pushItems = json => {
   json.frames.forEach(frame => {
     frame.layers.forEach(layer => {
-      if (layer.src.match(/[a-z]*?\.png/)) {
+      if (layer.src.match(regex.src)) {
         items.push( { "id": `${layer.src.match(regex.id)}`, "src": assetPath + layer.src } )
       }
     });
