@@ -5,31 +5,32 @@ import Animation from './Animation';
 import Sprite from './Sprite';
 
 export default class Banner {
-  constructor({ width, height, frames }, queue, layers) {
+  constructor({ width, height, frames }, queue, layers, regex) {
     this.width = width;
     this.height = height;
     this.frames = frames;
     this.layers = layers;
+    this.regex = regex;
     this.queue = queue;
     this.frameDelay = 0;
     this.timeline = new TimelineLite({ paused: true });
   }
 
   createElements() {
-    this.layers.forEach((layer, i) => {
+    this.layers.forEach((layer, i) => {      
       const imgInfo = {
         top: layer.top,
         left: layer.left,
-        id: layer.src.match(/[a-z0-9_]*/i),
-        path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
+        id: layer.src.match(this.regex.id),
+        path: this.queue.getResult(layer.src.match(this.regex.id))
       };
       const spriteInfo = {
         top: layer.top,
         left: layer.left,
         width: layer.spriteWidth,
         height: layer.spriteHeight,
-        id: layer.src.match(/[a-z0-9_]*/i),
-        path: this.queue.getResult(layer.src.match(/[a-z0-9_]*/i))
+        id: layer.src.match(this.regex.id),
+        path: this.queue.getResult(layer.src.match(this.regex.id))
       };
       const divInfo = {
         top: layer.top,
@@ -45,9 +46,9 @@ export default class Banner {
           new DOMElement(spriteInfo);
           break;
         case "background":
-          if (layer.src.match(/[a-z]*?\.png/)) {
+          if (layer.src.match(this.regex.img)) {
             new DOMElement(imgInfo);
-          } else if (layer.src.match(/#[a-f0-9]{6}/i)) {
+          } else if (layer.src.match(this.regex.hex)) {
             new DOMElement(divInfo);
             document.getElementById(divInfo.id).style.backgroundColor = layer.src;
           } else {
@@ -68,17 +69,17 @@ export default class Banner {
         switch (layer["type"]) {
           case "image":
             layer.animations.forEach(animation => {
-              new Animation(layer, animation, this.frameDelay, this.timeline, `#${layer.src.match(/[a-z0-9_]*/i)}`)
+              new Animation(layer, animation, this.frameDelay, this.timeline, `#${layer.src.match(this.regex.id)}`)
                 .styleChange();
             })
             break;
           case "background":
-            if (layer.src.match(/[a-z]*?\.png/)) {
+            if (layer.src.match(this.regex)) {
               layer.animations.forEach(animation => {
-                new Animation(layer, animation, this.frameDelay, this.timeline, `#${layer.src.match(/[a-z0-9_]*/i)}`)
+                new Animation(layer, animation, this.frameDelay, this.timeline, `#${layer.src.match(this.regex.id)}`)
                   .styleChange();
               })
-            } else if (layer.src.match(/#[a-f0-9]{6}/i)) {
+            } else if (layer.src.match(this.regex.hex)) {
               layer.animations.forEach(animation => {
                 new Animation(layer, animation, this.frameDelay, this.timeline, `#background${i}`)
                   .styleChange();
@@ -88,7 +89,7 @@ export default class Banner {
             }
             break;
           case "spritesheet":
-            new Sprite(layer, null, this.frameDelay, this.timeline, `#${layer.src.match(/[a-z0-9_]*/i)}`)
+            new Sprite(layer, null, this.frameDelay, this.timeline, `#${layer.src.match(this.regex.id)}`)
               .playSprite(this.width, this.height);
             break;
           default:

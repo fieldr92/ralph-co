@@ -9,6 +9,11 @@ const jsonFile = `data.json`;
 const assetPath = './assets/';
 const items = [];
 const layers = [];
+const regex = {
+  id: /[a-z0-9_]*/i,
+  img: /[a-z]*?\.png/,
+  hex: /#[a-f0-9]{6}/i
+}
 
 async function init() {
   try {
@@ -32,7 +37,7 @@ const loadJSON = file => {
 const loadBanner = json => {
   queue.loadManifest(items);
   queue.on('complete', () => {
-    new Banner(json, queue, layers)
+    new Banner(json, queue, layers, regex)
     .createElements()
     .animateFrames()
     .start();
@@ -43,7 +48,7 @@ const pushItems = json => {
   json.frames.forEach(frame => {
     frame.layers.forEach(layer => {
       if (layer.src.match(/[a-z]*?\.png/)) {
-        items.push( { "id": `${layer.src.match(/[a-z0-9_]*/i)}`, "src": assetPath + layer.src } )
+        items.push( { "id": `${layer.src.match(regex.id)}`, "src": assetPath + layer.src } )
       }
     });
   });
