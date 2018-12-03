@@ -6,7 +6,7 @@ module.exports = {
   entry: ["@babel/polyfill", './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'app.js'
   },
   mode: 'development',
   devServer: {
@@ -52,18 +52,6 @@ module.exports = {
       template: 'src/index.html',
       path: path.resolve(__dirname, 'build'),
       filename: 'index.html'
-    }),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: './src/data/data.json',
-          to: path.resolve(__dirname, 'build/data/data.json'),
-        },
-        {
-          from: './src/assets',
-          to: path.resolve(__dirname, 'build/assets')
-        }
-      ]
-    )
+    })
   ]
 }
